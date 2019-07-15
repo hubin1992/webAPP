@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* tool */
+/* tool end*/
+/* reset */
+body {
+    font-family: Helvetica;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    background: #eeeeee;
+}
+
+a, input, button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+input, button {
+    -webkit-appearance: none;
+    border-radius: 0;
+    outline: none;
+}
+
+div, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* reset end*/
+/* header */
+#header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.16rem 0.1333333333rem 0 0.9866666667rem;
+    height: 0.96rem;
+    background: url("../img/下载.png") #ec602b no-repeat 0.1333333333rem center;
+    background-size: 27px 20px;
+}
+
+[data-dpr="2"] #header {
+    background-size: 54px 40px;
+}
+
+[data-dpr="3"] #header {
+    background-size: 81px 60px;
+}
+
+#header .input-search {
+    background: #a73419;
+    width: 8.8266666667rem;
+    height: 0.6666666667rem;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 0.6666666667rem;
+    color: #F0E0DC;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+[data-dpr="2"] #header .input-search {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+[data-dpr="3"] #header .input-search {
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+}
+
+[data-dpr="2"] #header .input-search {
+    font-size: 26px;
+}
+
+[data-dpr="3"] #header .input-search {
+    font-size: 39px;
+}
+
+/* header end */
+/* banner */
+.banner-wrap {
+    box-sizing: border-box;
+    width: 10rem;
+    height: 3.12rem;
+    position: relative;
+}
+
+.banner-wrap a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-wrap a img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-wrap .banner-btn {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0.2933333333rem;
+    right: 0;
+    width: 3.4133333333rem;
+    height: 0.2666666667rem;
+    font-size: 0;
+}
+
+.banner-wrap .banner-btn span {
+    display: inline-block;
+    width: 0.2666666667rem;
+    height: 0.2666666667rem;
+    border-radius: 50%;
+    margin: 0 0.1066666667rem;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.banner-wrap .banner-btn span.active {
+    background: #ed612b;
+}
+
+/* banner-wrap edn */
+/* enter */
+.enter {
+    width: 10rem;
+    height: 4.64rem;
+    box-sizing: border-box;
+    padding: 0 0.3466666667rem 0.3866666667rem;
+    border-bottom: 2px solid #e8e8e8;
+    background: #fff;
+}
+
+.enter .row {
+    padding-top: 0.32rem;
+    display: -webkit-box;
+    display: flex;
+    height: 1.8rem;
+}
+
+.enter .row:nth-of-type(1) a:nth-of-type(2):before {
+    background-position: -1.2rem 0;
+}
+
+.enter .row:nth-of-type(1) a:nth-of-type(3):before {
+    background-position: -2.4rem 0;
+}
+
+.enter .row:nth-of-type(1) a:nth-of-type(4):before {
+    background-position: -3.6rem 0;
+}
+
+.enter .row:nth-of-type(1) a:nth-of-type(5):before {
+    background-position: -4.8rem 0;
+}
+
+.enter .row:nth-of-type(2) a:nth-of-type(1):before {
+    background-position: 0 -1.2rem;
+}
+
+.enter .row:nth-of-type(2) a:nth-of-type(2):before {
+    background-position: -1.2rem -1.2rem;
+}
+
+.enter .row:nth-of-type(2) a:nth-of-type(3):before {
+    background-position: -2.4rem -1.2rem;
+}
+
+.enter .row:nth-of-type(2) a:nth-of-type(4):before {
+    background-position: -3.6rem -1.2rem;
+}
+
+.enter .row:nth-of-type(2) a:nth-of-type(5):before {
+    background-position: -4.8rem -1.2rem;
+}
+
+.enter .row a {
+    width: 0;
+    line-height: 0.6666666667rem;
+    -webkit-box-flex: 1;
+    flex: 1;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #656565;
+}
+
+[data-dpr="2"] .enter .row a {
+    font-size: 24px;
+}
+
+[data-dpr="3"] .enter .row a {
+    font-size: 36px;
+}
+
+.enter .row a:before {
+    content: "";
+    display: block;
+    width: 1.1333333333rem;
+    height: 1.1333333333rem;
+    margin: 0 auto;
+    background: url("../img/enter.png") no-repeat;
+}
+
+/* enter end */
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <style>
+    .box{
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+    .box2 {
+      position: absolute;
+      bottom: -120px;
+      left:120px;
+      width:100px;
+      height:100px;
+      background:yellow;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box2"></div>
+  </div>
+  <script>
+    window.onload=function(){
+      let box  = document.querySelector('.box')
+      let box2  = document.querySelector('.box2')
+      
+      //事件的true是发生在捕获阶段，false是发生在冒泡阶段,默认就是在冒泡阶段
+      //冒泡是从下往上触发，捕获是从上往下触发
+      box.addEventListener('touchstart',()=>{
+        console.log('box')
+      })
+
+      box2.addEventListener('touchstart',()=>{
+        console.log("box2")
+      })
+
+    }
+  
+  </script>
+</body>
+</html>

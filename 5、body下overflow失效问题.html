@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>fixed</title>
+    <style>
+
+        html {
+            overflow: hidden;
+            height: 100%;
+            position: relative;
+        }
+
+        body {
+            /* 在ios下body的overflow会失效  */
+            /* 解决的方法就是在套一层,然后给body一个overflow：hidden,div来做auto */
+            margin: 0;
+            height: 100%;
+        }
+        .wrap{
+            height: 100%;
+            overflow: auto;
+        }
+
+        header {
+            position: fixed;
+            margin: 0;
+            text-align: center;
+            height: 30px;
+            background: #000;
+            color: #fff;
+            width: 200%;
+        }
+
+        section {
+            padding-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>我是头部</header>
+    <section>
+        我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+        <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+        <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+        <br>我是内容 <br>我是内容 <br>
+    </section>
+</div>
+</body>
+</html>

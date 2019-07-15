@@ -1,0 +1,203 @@
+@charset "utf-8";
+
+/* tool */
+//根据dpr来计算不同的大小
+@mixin font-size($size){
+  font-size: $size;
+
+  [data-dpr="2"] & {
+    font-size: $size*2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $size*3;
+  }
+}
+@mixin background($width,$height){
+  background-size: $width $height;
+  [data-dpr="2"] & {
+    background-size: $width*2  $height*2;
+  }
+  [data-dpr="3"] & {
+    background-size: $width*3 $height*3;
+  }
+}
+
+@mixin border-radius($size){
+  -webkit-border-radius: $size;
+  border-radius: $size;
+  [data-dpr="2"] & {
+    -webkit-border-radius: $size*2;
+    border-radius: $size*2;
+  }
+  [data-dpr="3"] & {
+    -webkit-border-radius: $size*3;
+    border-radius: $size*3;
+  }
+}
+//单位转换
+@function px2em($px,$fontSize:75px){
+  @return ($px / $fontSize) * 1rem
+}
+
+/* tool end*/
+
+/* reset */
+body{
+  font-family: Helvetica;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  background: #eeeeee;
+}
+a, input, button{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  text-decoration: none;
+}
+
+input, button{
+  -webkit-appearance: none;
+  border-radius: 0;
+  outline: none;
+}
+div,ul,li{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+/* reset end*/
+
+/* header */
+#header{
+  box-sizing: border-box;
+  width: 100%;
+  padding: px2em(12px) px2em(10px) 0 px2em(74px) ;
+  height: px2em(72px);
+  background: url("../img/下载.png") #ec602b no-repeat  px2em(10px) center;
+  @include background(27px,20px);
+  .input-search{
+    background: #a73419;
+    width: px2em(662px);
+    height: px2em(50px);
+    box-sizing: border-box;
+    text-align: center;
+    line-height:px2em(50px);
+    color: #F0E0DC;
+    @include border-radius(4px);
+    @include font-size(13px);
+  }
+}
+/* header end */
+
+
+/* banner */
+.banner-wrap{
+  box-sizing: border-box;
+  width: 10rem;
+  height:px2em(234px);
+  position: relative;
+  a{
+    display: block;
+    width:100%;
+    height: 100%;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .banner-btn{
+    box-sizing: border-box;
+    position: absolute;
+    bottom: px2em(22px);
+    right: 0;
+    width: px2em(256px);
+    height: px2em(20px);
+    font-size: 0;
+    span{
+      display: inline-block;
+      width:px2em(20px);
+      height: px2em(20px);
+      border-radius: 50%;
+      margin: 0 px2em(8px);
+      background: rgba(255,255,255,.5);
+      &.active{
+        background: #ed612b;
+      }
+    }
+  }
+}
+/* banner-wrap edn */
+
+
+/* enter */
+.enter{
+  width:px2em(750px);
+  height: px2em(348px);
+  box-sizing: border-box;
+  padding: 0 px2em(26px) px2em(29px);
+  border-bottom: 2px solid #e8e8e8;
+  background: #fff;
+  .row{
+    padding-top: px2em(24px);
+    display: -webkit-box;
+    display: flex;
+    height: px2em(135px);
+    &:nth-of-type(1) a:nth-of-type(2):before{
+      background-position: px2em(-90px) 0;
+    }
+    &:nth-of-type(1) a:nth-of-type(3):before{
+      background-position: px2em(-180px) 0;
+    }
+    &:nth-of-type(1) a:nth-of-type(4):before{
+      background-position: px2em(-270px) 0;
+    }
+    &:nth-of-type(1) a:nth-of-type(5):before{
+      background-position: px2em(-360px) 0;
+    }
+    &:nth-of-type(2) a:nth-of-type(1):before{
+      background-position:  0 px2em(-90px);
+    }
+    &:nth-of-type(2) a:nth-of-type(2):before{
+      background-position:  px2em(-90px) px2em(-90px);
+    }
+    &:nth-of-type(2) a:nth-of-type(3):before{
+      background-position:  px2em(-180px) px2em(-90px);
+    }
+    &:nth-of-type(2) a:nth-of-type(4):before{
+      background-position:  px2em(-270px) px2em(-90px);
+    }
+    &:nth-of-type(2) a:nth-of-type(5):before{
+      background-position:  px2em(-360px) px2em(-90px);
+    }
+    a{
+      width: 0;
+      line-height: px2em(50px);
+      -webkit-box-flex: 1;
+      flex: 1;
+      display: block;
+      text-align: center;
+      @include font-size(12px);
+      color: #656565;
+      &:before{
+        content: "";
+        display: block;
+        width: px2em(85px);
+        height: px2em(85px);
+        margin: 0 auto;
+        background: url("../img/enter.png") no-repeat;
+      }
+    }
+  }
+
+
+}
+
+/* enter end */
+
+
+
+
+
+

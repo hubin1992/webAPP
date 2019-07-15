@@ -1,0 +1,257 @@
+//tool
+@mixin font-size($size) {
+  font-size: $size;
+
+  [data-dpr="2"] & {
+    font-size: $size*2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $size*3;
+  }
+}
+
+@function pxRem($px,$fontSize:75px) {
+  @return ($px / $fontSize) * 1rem
+}
+
+//tol end
+
+/* reset css */
+body, header, footer, main, div, h1, ul, li {
+  margin: 0;
+  pading: 0;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+  font-family: PingFangSC-Regular, Hiragino Sans GB, sans-serif;
+}
+
+
+.wrap{
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;   /*  解决划动时候卡顿的问题 */
+}
+
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.clear:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.wordFlow{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* reset css end */
+
+/*header*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+header .title {
+  background: #e54847;
+  text-align: center;
+  @include font-size(18px);
+  color: #fff;
+  font-weight: 400;
+  height: pxRem(103px);
+  line-height: pxRem(103px);
+}
+
+header .nav {
+  height: pxRem(88px);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #777;
+  .city-enter {
+    padding-left: pxRem(30px);
+    @include font-size(15px);
+    color: #666;
+    display: flex;
+    align-items: center;
+  }
+  .city-enter:after {
+    margin: pxRem(8px) 0 0 pxRem(8px);
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+    border: 6px solid;
+    border-color: #b0b0b0 transparent transparent transparent;
+  }
+  .search {
+    height: pxRem(88px);
+    width: pxRem(88px);
+    @include font-size(20px);
+    color: #f03d37;
+    text-align: center;
+    line-height: pxRem(88px);
+    font-weight: bold;
+  }
+  .switch-hot {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    a {
+      width: pxRem(160px);
+      color: #666;
+      @include font-size(15px);
+      margin: 0 pxRem(24px);
+      height: pxRem(88px);
+      line-height: pxRem(88px);
+      text-align: center;
+      &.active {
+        color: #ef4238;
+        border-bottom: pxRem(4px) solid #ef4238;
+      }
+    }
+
+  }
+
+}
+
+/*header end*/
+
+/* footer */
+.footer {
+  border-top: 1px solid #d8d8d8;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  ul {
+    padding: 0;
+    display: flex;
+    li {
+      text-align: center;
+      display: flex;
+      flex: 1;
+      height: pxRem(96px);
+      align-items: center;
+      justify-content: center;
+      a {
+        display: block;
+        color: #696969;
+        @include font-size(12px);
+        i {
+          @include font-size(20px);
+          display: block;
+
+        }
+        span {
+          display: block;
+        }
+        &.active {
+          color: #f03d37;
+        }
+      }
+    }
+  }
+
+}
+
+/* footer end */
+
+/* main */
+.main {
+  margin-top: pxRem(192px);
+  margin-bottom:pxRem(96px);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 pxRem(30px);
+  background: #fff;
+}
+.pro-list{
+
+  display: flex;
+  .pro-img{
+    margin-top:pxRem(28px);
+    margin-right: pxRem(24px);
+    a{
+      width: pxRem(128px);
+      display: block;
+      height: pxRem(180px);
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+  .content{
+    padding: pxRem(28px) pxRem(24px) pxRem(28px) 0;
+    border-bottom: 1px solid #777;
+    background: #fff;
+    width: 100%;
+    height: pxRem(180px);
+    display: flex;
+    .pro-content{
+      flex: 1;
+      padding-right: pxRem(10px);
+    }
+    .move-title{
+      width: pxRem(406px);
+      height: pxRem(48px);
+      line-height: pxRem(48px);
+      color: #666;
+      @include font-size(17px);
+      margin-bottom: pxRem(12px);
+    }
+    .source ,.actor,.show-info{
+      width: pxRem(406px);
+      color: #666;
+      span{
+        @include font-size(13px)
+      }
+      .grade{
+        color: #faaf00;
+        font-size: 15px;
+      }
+    }
+    .actor,.show-info{
+      width: pxRem(406px);
+      margin-top: pxRem(12px);
+    }
+    .buy {
+      display: flex;
+      align-items: center;
+      a{
+        display: block;
+        width: pxRem(94px);
+        height: pxRem(54px);
+        text-align: center;
+        line-height: pxRem(54px);
+        color: #fff;
+        background:#f03d37;
+        @include font-size(12px);
+        border-radius: 8px;
+      }
+    }
+
+  }
+}
+
+
+
+
+/* main end */

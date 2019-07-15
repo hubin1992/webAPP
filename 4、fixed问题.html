@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>fixed</title>
+    <style>
+
+        html {
+            overflow: hidden;
+            height: 100%;
+            position: relative;
+        }
+
+        /*
+            这样在ios中会有一个问题
+            1、下拉的时候反弹
+            2、滚动条会跑到header的底下
+
+            所以我们解决这个问题需要到事件的时候来解决
+        */
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: auto;
+        }
+
+        header {
+            position: fixed;
+            margin: 0;
+            text-align: center;
+            height: 30px;
+            background: #000;
+            color: #fff;
+            width: 100%;
+        }
+
+        section {
+            padding-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<header>我是头部</header>
+<section>
+    我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+    <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+    <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容 <br>我是内容
+    <br>我是内容 <br>我是内容 <br>
+</section>
+</body>
+</html>

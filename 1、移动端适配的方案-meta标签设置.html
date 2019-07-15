@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+
+    <!-- x5内核强制使用竖屏或者横屏 -->
+    <meta name="x5-orientation" content="portrait|landscape">
+    <!-- x5内核的全屏显示 -->
+    <meta name="x5-fullscreen" content="true">
+
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+
+    <!-- ios开启全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- 禁止ios自动识别电话和邮件 -->
+    <meta name="format-detection" content="telephone=no email=no">
+
+    <!--
+        库引进来之后，只需要解决两个问题，1个是px换算成rem，一个是font-size的使用px的问题
+    -->
+
+    <!--
+       //根据dpr来计算不同的大小
+        @mixin font-size($size){
+          font-size: $size;
+          [data-dpr="2"] & {
+            font-size: $size*2;
+          }
+
+          [data-dpr="3"] & {
+            font-size: $size*3;
+          }
+        }
+        //单位转换
+        @function px2em($px){
+          @return ($px / 64px) * 1rem
+}
+    -->
+    <!-- 淘宝自适应方案 -->
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+
+<!-- 如果我们特意的想发送邮件和拨打电话 -->
+<p>仅仅是数字1234434434</p>
+<a href="tel:1888888888">拨打电话1888888888</a>
+<a href="mailto:java@163.com">发送邮件java@163.com</a>
+
+</body>
+</html>

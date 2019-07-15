@@ -1,0 +1,226 @@
+//tool
+
+//px 转换为rem
+@function pxrem($px , $base-font-size:64px) {
+  @return ($px / $base-font-size) * 1rem
+}
+
+//使用的时候直接用 pxrem()
+//根据dpr的不同，设置字体的大小
+
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+  [data-dpr='2'] & {
+    font-size: $font-size*2;
+  }
+  [data-dpr='3'] & {
+    font-size: $font-size*3;
+  }
+}
+
+//使用的只会 @include font-dpr(字体大小)
+
+/* reset */
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica";
+  -webkit-user-select: none;
+  height: 100%;
+  overflow: hidden;
+}
+
+a, input, button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input, button {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+div, h1, header {
+  margin: 0;
+  padding: 0;
+}
+
+/* reset end */
+
+/* header */
+#header {
+  width: 100%;
+  height: pxrem(90px);
+  background: #ef3239;
+  position: relative;
+  border-bottom: 1px solid #b2b2b2;
+  box-sizing: border-box;
+  a {
+    position: absolute;
+    top: 0;
+    width: pxrem(103px);
+    height: pxrem(89px);
+    line-height: pxrem(89px);
+    text-align: center;
+    color: #fff;
+  }
+}
+
+.task {
+  left: 0;
+  @include font-dpr(23px)
+}
+
+.refresh {
+  right: 0;
+  @include font-dpr(28px)
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  height: pxrem(89px);
+  line-height: pxrem(89px);
+  font-size: pxrem(36px);
+  span {
+    color: #fff;
+    @include font-dpr(22px);
+    margin-right: pxrem(10px);
+  }
+}
+
+/* header end */
+
+/* nav */
+.nav-small {
+  position: absolute;
+  top: pxrem(90px);
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: pxrem(88px);
+  background-color: #fff;
+  border-bottom: 1px solid #b2b2b2;
+  a {
+    float: left;
+    width: 25%;
+    text-align: center;
+    color: #848689;
+    font-size: pxrem(30px);
+    height: pxrem(88px);
+    line-height: pxrem(88px);
+    &:nth-of-type(1) span {
+      @include font-dpr(18px);
+      font-weight: bold;
+    }
+    .spanwrap {
+      line-height: pxrem(14px);
+      display: inline-block;
+      width: pxrem(20px);
+      vertical-align: middle;
+      margin-top: pxrem(-2px);
+      margin-left: pxrem(-8px);
+      span {
+        float: left;
+        @include font-dpr(18px)
+
+      }
+    }
+    &:last-child span {
+      font-size: pxrem(30px);
+      font-weight: bold;
+    }
+  }
+
+  .active {
+    color: #f23838;
+  }
+}
+/* nav end */
+
+
+/* content */
+.content-warp{
+  position: absolute;
+  top: pxrem(178px);
+  left: 0;
+  right: 0;
+  bottom:0;
+  overflow: auto;
+}
+#content{
+  width: 100%;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  .pro-item{
+    position: relative;
+    display: block;
+    padding: pxrem(20px);
+    border-bottom: 1px solid #cccccc;
+  }
+  .pro-img{
+    position: absolute;
+    top: pxrem(20px);
+    left: pxrem(20px);
+    width: pxrem(200px);
+    height: pxrem(200px);
+    img{
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+  .pro-dec{
+    padding-left: pxrem(228px);
+    height: pxrem(200px);
+    display: block;
+    box-sizing: border-box;
+  }
+  .title{
+    display: block;
+    line-height: pxrem(38px);
+    width: 100%;
+    height: pxrem(76px);
+    font-size: pxrem(24px);
+    color: #333;
+    text-align: left;
+  }
+  .price{
+    padding-top: pxrem(30px);
+    color: #f23838;
+    height: pxrem(44px);
+    line-height: pxrem(44px);
+    font-size: pxrem(33px);
+    display: block;
+    text-align: left;
+  }
+  .judge{
+    height: pxrem(54px);
+    line-height: pxrem(54px);
+    font-size: pxrem(24px);
+    color: #808080;
+  }
+
+
+}
+
+/* content end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
