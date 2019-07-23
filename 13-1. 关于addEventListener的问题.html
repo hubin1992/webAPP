@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=1" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<script>
+			window.onload = function() {
+				document.addEventListener('touchmove', function(ev) {
+					ev.preventDefault();
+				});
+
+				//在这我们会看到报一堆错误Unable to preventDefault inside passive event listener due to target being treated as passiv 说是被动监听，无法使用阻止默认事件
+				//其实在所有的touch事件中都会有这个问题
+
+				//出现的原因：由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，这就导致了浏览器不能及时响应滚动，略有延迟。所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，会默认为是 passive: true。浏览器忽略 preventDefault() 就可以第一时间滚动了。
+
+				//解决的方法
+				//1）touch-action:none 就可以解决了
+				//关于touch-action中常用的参数
+				/*
+          ios下兼容的两个：
+          auto是默认值，表示随便用户缩放
+          manipulation： 表示仅仅是允许用户缩放和滚动，这个比较不错，直接就去掉pc端事件的300ms的延迟
+          -------------------------------------
+          none: 不进行任何的touch相关的默认行为，你想用手指滚动网页就不行，双击放大缩小页面也不可以，所有这些行为要自定义。
+          pan-x表示手指头可以水平移来移去。
+          pan-left表示手指头可以往左移动，移动开始后还是可以往右恢复的。
+          pan-right表示手指头可以可以往右移动，移动开始后还是可以往左恢复的。
+          pan-y表示手指头可以垂直移来移去。
+          pan-up表示手指头可以往上移，移动开始后还是可以往下恢复的。
+          pan-down表示手指头可以往下移，移动开始后还是可以往上恢复的。
+          pan-zoom表示手指头可以用来缩放页面。
+        */
+
+        //2）用js方式来解决
+          document.addEventListener('touchmove', function (event) {
+              event.preventDefault();
+          }, {
+              passive: false//用这种方式来解决
+          });
+
+          //addEventListener(type,fn,options)
+          /* 
+            options 可选
+              capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
+              once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。
+              passive: Boolean，设置为true时，表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告
+           */
+			  };
+		</script>
+	</head>
+	<body></body>
+</html>

@@ -1,0 +1,30 @@
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+}
+* {
+	box-sizing: border-box;
+}
+div,
+h3 {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+/* ios 点击有背景 */
+a,
+button,
+input {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+button {
+	/* ios圆角去掉 */
+	-webkit-appearance: none;
+	border-radius: 0;
+}

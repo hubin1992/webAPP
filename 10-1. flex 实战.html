@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+    <script src="./flexble.js"></script>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+      .row{
+        display: -webkit-box;
+        display: flex;
+      }
+      .row div{
+        /* 因为老版本的计算会受内容的宽度的影响 */
+        width: 0; 
+        -webkit-box-flex: 1;
+        flex: 1;
+        margin-top: .1rem;
+      }
+      .row div a{
+        color: #ccc;
+        font-size: .22rem;
+        display: block;
+        line-height: .46rem;
+        text-align: center;
+      }
+      .row div a:before{
+        content: "";
+        display: block;
+        width: .86rem;
+        height: .86rem;
+        background: red;
+        margin: 0 auto;
+        background: url("./img/1111.png");
+        background-size:100% 100%; 
+      }
+    </style>
+	</head>
+	<body>
+    <div class="row">
+      <div><a href="">天猫</a></div>
+      <div><a href="">聚划算</a></div>
+      <div><a href="">天猫国际</a></div>
+      <div><a href="">外卖</a></div>
+    </div>
+    <div class="row">
+      <div><a href="">天猫</a></div>
+      <div><a href="">聚划算</a></div>
+      <div><a href="">天猫国际</a></div>
+      <div><a href="">外卖</a></div>
+    </div>
+
+  </body>
+</html>

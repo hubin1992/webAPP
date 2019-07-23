@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+				margin: 0;
+			}
+			div {
+				margin: 0;
+			}
+			.wrap {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
+			.scroll {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+			}
+		</style>
+		<script>
+			//实现划屏的思路
+			//静态布局
+			//1. 我们首先要禁止掉默认的划屏幕
+			//2. 我们要找一个外部元素作为基础
+			//3. 然后定义内部元素，不定义高度作为100%
+
+			//js逻辑
+			//1. 首先touchstart的时候，我们首先要获取到当前手指的坐标
+			//2. move结束的时候，我们再次获取到坐标，得到两者的差值，
+			//3. 我们设置当前元素的offset值=等于我们开始的位置+移动的差值
+      //4. 我们还需要做一个上边界0,和下边界（滚动和父级的底部统一了）的判断
+
+      document.addEventListener("touchstart",function(e){
+        e.preventDefault()
+      },{passive:false})
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="scroll">
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+				移动端教程今天研究完成 <br />
+			</div>
+    </div>
+    <script>
+      //获取ele
+      let wrap = document.querySelector(".wrap"),
+          scroll = document.querySelector(".scroll");
+          startY = 0,
+          pageY = 0,
+          parH = wrap.clientHeight,
+          chiH = scroll.offsetHeight
+
+
+          scroll.addEventListener("touchstart",function(e){
+             pageY = e.changedTouches[0].pageY;//获取开始的距离
+             startY = scroll.offsetTop
+          },{passive:false})
+          scroll.addEventListener("touchmove",function(e){
+              let nowY = e.changedTouches[0].pageY
+              let diff = nowY - pageY +startY
+              if(diff >=0){
+                diff = 0 
+              }
+              if(diff <= parH - chiH){
+                diff = parH - chiH +"px"
+              }
+              this.style.top = diff+"px"
+            },{passive:false})
+    </script>
+	</body>
+</html>

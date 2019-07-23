@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 300px;
+      height: 300px;
+      background: red;
+      color: #fff;
+      font-size: 40px;
+    }
+  </style>
+  <script>
+    window.onload =function(){
+      document.addEventListener("touchstart",function(e){
+        e.preventDefault()
+      },{passive:false})
+    }
+  
+  </script>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    let box  = document.querySelector("#box");
+    //这是移动端事件中，我们比较常用的几个参数  都是以数组的形式存在，都有一个length属性，这个length属性代表这我们的总共有几个手指在划动
+    //touches   屏幕上的手指列表   
+    //changedTouches  触发事件的手指列表
+    //targetTouches   当前元素的手指列表
+    box.addEventListener("touchmove",function(e){
+      // console.log(e);
+      // this.innerHTML = e.touches.length
+      console.log(e.touches)
+    },{passive:false})
+  
+  </script>
+</body>
+</html>

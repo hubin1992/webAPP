@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .row{
+      display: flex;
+    }
+    .row div{
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background: red;
+    }
+    .row p{
+      background: #ccc;
+      width: 100px;
+      height: 100px;
+    }
+    /* nth-of-type比较松散  他只会找到你n个元素，不管你中间是否掺杂的别的元素*/
+    /* nth-child比较严谨  他必须第n个元素是我们的伪类，不然的话就会报错*/
+
+   .row:nth-of-type(2) div:nth-child(1){
+     background: yellow;
+   }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div></div>
+    <p></p>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="row">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+</body>
+</html>

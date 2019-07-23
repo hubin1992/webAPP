@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=1" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background: red;
+        opacity: .5;
+        position: absolute;
+        top: 0;
+        left: 0;
+			}
+    </style>
+    <script>
+    window.onload = function(){
+      document.addEventListener("touchstart",function(e){
+        e.preventDefault();
+      },{passive:false})
+
+      //用这个可以解决的问题
+      //1. 移动端橡皮筋的问题
+      //2. 移动端长按选中文字和弹出菜单的选项
+      //3. 移动端touch事件点透的问题
+      /* 
+        点透出现的原因：因为我们手指，碰到屏幕的时候，会触发两个事件先触发touch事件，然后在去触发click事件，而click事件在移动端有300ms的延迟，如果元素的层级如果有可可跳转的或者对应的事件就是触发
+
+        //解决的方式：
+        1. 不使用  a标签之类的
+        2. 给document 阻止默认事件
+       */
+
+
+       //缺点：
+       //1. 无法跳转来
+       //2. 滚动消失了，需要自定义来解决
+
+       //解决方式： 1）用location.href 来跳转
+       //2)自定义滚动条
+
+      let box  = document.querySelector(".box")
+      box.addEventListener("touchstart",function(){
+        this.style.display ="none"
+      },{passive:false})
+    }
+    </script>
+	</head>
+	<body>
+    <a href="https://www.baidu.com" target="_parent">打开百度</a>
+    <div class="box"></div>
+	</body>
+</html>
