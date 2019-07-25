@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style class="css">
+			body {
+				margin: 0;
+			}
+			.wrap {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+			}
+			.list {
+				position: absolute;
+				top: 0;
+				left: 0;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.list li {
+				float: left;
+			}
+			.list li img {
+				width: 100%;
+				/* 去掉img的间距 */
+				display: block;
+			}
+			.nav {
+				position: absolute;
+				left: 0;
+				bottom: 2px;
+				width: 100%;
+				text-align: center;
+				font-size: 0;
+			}
+			.nav span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 5px;
+				background: red;
+				margin-right: 10px;
+			}
+			.nav span.active {
+				background: blue;
+			}
+		</style>
+		<script>
+			document.addEventListener(
+				'touchstart',
+				function(e) {
+					e.preventDefault();
+				},
+				{ passive: false }
+			);
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul class="list">
+				<li>
+					<a href="#"><img src="./img/1.jpg" alt=""/></a>
+				</li>
+				<li>
+					<a href="#"><img src="./img/2.jpg" alt=""/></a>
+				</li>
+				<li>
+					<a href="#"><img src="./img/3.jpg" alt=""/></a>
+				</li>
+				<li>
+					<a href="#"><img src="./img/4.jpg" alt=""/></a>
+				</li>
+			</ul>
+			<nav class="nav">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</nav>
+		</div>
+		<script>
+			window.onload = function() {
+				//如果我们不加上这个，获取到的li的高度是22,坑爹的玩意
+				var wrap = document.querySelector('.wrap');
+				var list = document.querySelector('.list');
+				var aLi = document.querySelectorAll('.list li');
+				var css = document.querySelector('.css');
+        var navList = document.querySelectorAll(".nav span")
+				var temp = '';
+			     var startX = 0;
+			     var startPoint = 0;
+			     var wrapW = wrap.offsetWidth;
+				wrap.style.height = aLi[0].offsetHeight + 'px';
+				//list的宽度
+				temp = '.list{width:' + aLi.length + '00%' + '}';
+				//li的宽度
+				temp += '.list li{width:' + (1 / aLi.length) * 100 + '%}';
+			     //写入到css中
+				css.innerHTML += temp;
+			     wrap.addEventListener("touchstart",function(e){
+			       startX = list.offsetLeft
+			       startPoint = e.changedTouches[0].pageX
+             list.style.transition = "none"
+             list.style.webkitTransition = "none"
+			     },{passive:false})
+
+			     wrap.addEventListener("touchmove",function(e){
+			       let nowPoint  = e.changedTouches[0].pageX
+			       list.style.left = nowPoint - startPoint + startX +"px"
+			     },{passive:false})
+
+			     wrap.addEventListener("touchend",function(e){
+             let index = Math.round(list.offsetLeft / wrapW)
+			       //当我们手指离开的时候，我们要做一个判断，这个判断就是来判定是上一张还是下一张
+			      list.style.left =  index * wrapW +"px"
+            list.style.transition = ".5s"
+             list.style.webkitTransition = ".5s"
+            navList.forEach((item)=>{
+              item.className = ""
+            })
+            navList[-index].className ="active"
+			     },{passive:false})
+			};
+		</script>
+	</body>
+</html>
