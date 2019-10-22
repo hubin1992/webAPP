@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style class="css">
+			div,
+			ul,
+			li,
+			ol {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+			.wrap {
+				width: 600px;
+				height: 300px;
+				margin: 100px auto;
+				position: relative;
+			}
+			.picList {
+				height: 300px;
+        perspective: 300px;
+			}
+			.picList li {
+				float: left;
+				position: relative;
+				width: 30px;
+				height: 300px;
+				transform-origin: center center -150px;
+        transform-style: preserve-3d;
+        /* 注意3d空间是增加给要旋转的元素 */
+			}
+			.picList li a {
+				position: absolute;
+				width: 30px;
+				height: 300px;
+			}
+			.picList a:nth-of-type(1) {
+				background: url('./img/d1.jpg');
+			}
+			.picList a:nth-of-type(2) {
+				background: url('./img/d2.jpg');
+				transform-origin: bottom;
+				position: absolute;
+				top: -300px;
+				width: 30px;
+				height: 300px;
+				transform: rotateX(90deg);
+			}
+			.picList a:nth-of-type(3) {
+        background: url('./img/d3.jpg');
+				transform: translateZ(-300px) rotateX(180deg);
+			}
+			.picList a:nth-of-type(4) {
+				background: url('./img/d4.jpg');
+        bottom: -300px; 
+        transform-origin: top;
+        transform: rotateX(-90deg)
+        /* 不断测试啊 */
+			}
+			.picList span {
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: #333;
+				width: 300px;
+				height: 300px;
+			}
+			.picList span:nth-of-type(1) {
+				transform-origin: left;
+				transform: rotateY(90deg);
+			}
+			.picList span:nth-of-type(2) {
+				left: 30px;
+				transform-origin: left;
+				transform: rotateY(90deg);
+			}
+
+			.btns {
+				position: absolute;
+				right: 0px;
+				bottom: -30px;
+				height: 20px;
+			}
+			.btns li {
+				float: left;
+				width: 50px;
+				height: 20px;
+				background: #ccc;
+				line-height: 20px;
+				text-align: center;
+				margin-right: 4px;
+				cursor: pointer;
+      }
+      /* 会出现有侧面的的黑块,是右侧的span，是因为我们景深的基点是从中间看，默认我们就会看到左侧的黑块，而且span是定位上去的，所以右侧的span层级高于左侧的span，我们处理的手法是，让大于1/2的li元素的层级小于前一个的层级，这样就遮挡住了 */
+		</style>
+		<script>
+			window.onload = function() {
+				let picList = document.querySelector('.picList'),
+					css = document.querySelector('.css'),
+					curCss = '',
+					step = 30,
+					len = picList.offsetWidth / step,
+					temp = '',
+          isIndex = 0,
+          zIndex = 0;
+				(function() {
+					for (let i = 0; i < len; i++) {
+            i > len/2 ? zIndex-- :zIndex++
+						temp += `<li>
+					<a href="#"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+					<span></span>
+					<span></span>
+        </li>`;
+						curCss += `.picList li:nth-of-type(${i + 1}) a{
+        background-position:  ${-i * step}px 0;
+      }`;
+						curCss += `.picList li:nth-of-type(${i + 1}) {
+        z-index:  ${zIndex};
+      }`;
+					}
+					picList.innerHTML = temp;
+					css.innerHTML += curCss;
+				})();
+				let aLis = document.querySelectorAll('.picList li');
+				document.querySelector('.next').onclick = function() {
+					isIndex++;
+					aLis.forEach(function(item, index) {
+						item.style.transform = `rotateX(${-isIndex * 90}deg)`;
+						item.style.transition = `2s ${index*step}ms`;
+					});
+        };
+        document.querySelector('.prev').onclick = function() {
+					isIndex--;
+					aLis.forEach(function(item, index) {
+						item.style.transform = `rotateX(${-isIndex * 90}deg)`;
+						item.style.transition = `2s ${index*step}ms`;
+					});
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul class="picList">
+				<li>
+					<a href="#"></a>
+					<a href="#"></a>
+					<!-- <a href="#"></a>
+					<a href="#"></a> -->
+					<!-- <span></span>
+              <span></span> -->
+				</li>
+			</ul>
+			<ol class="btns">
+				<li class="prev">上一张</li>
+				<li class="next">下一张</li>
+			</ol>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,259 @@
+.wrap {
+	/* 这个warp代替的是body */
+	height: 100%;
+  overflow: auto;
+  background: #eeeeee;
+}
+#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.14rem 0.12rem 0;
+	background: rgba(0, 0, 0, 0.8);
+}
+.header_C {
+	display: flex;
+	display: -webkit-flex;
+}
+.header_C .content_C {
+	height: 0.92rem;
+}
+.header_C .logo {
+	width: 1.66rem;
+}
+.header_C .logo a {
+	display: block;
+	height: 0.78rem;
+}
+.header_C .logo img {
+	width: 100%;
+	height: 100%;
+}
+#header .meau {
+	width: 1.12rem;
+}
+
+#header .meauShow,
+#header .meauHide {
+	margin: 0 auto;
+	display: block;
+	width: 0.58rem;
+	height: 0.82rem;
+	background: url('./img/menuBtn.png') top center no-repeat;
+	background-size: cover;
+}
+#header .meauHide {
+	margin: 0 auto;
+	display: block;
+	width: 0.58rem;
+	height: 0.82rem;
+	background: url('./img/menuBtn.png') bottom center no-repeat;
+	background-size: cover;
+}
+#header .right_enter {
+	flex: 1;
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: row-reverse;
+}
+#header .right_enter button {
+	margin-left: 0.18rem;
+	background: #669900;
+	color: #ccc;
+	font-size: 0.24rem;
+	border-radius: 5px;
+	width: 0.78rem;
+	height: 0.54rem;
+	border: none;
+}
+#header button.search {
+	width: 0.9rem;
+	height: 0.6rem;
+	font-size: 0.28rem;
+	background: #669900;
+	color: #fff;
+}
+#header .search_C {
+	height: 0.92rem;
+	box-sizing: border-box;
+	padding: 0.1rem 0;
+}
+#header .search_C form {
+	display: flex;
+}
+#header .search_C input[type='text'] {
+	width: 5.76rem;
+	height: 0.72rem;
+	box-sizing: border-box;
+	border: 1px solid #5a5a5a;
+	padding-left: 0.1rem;
+	border-radius: 0.08rem 0 0 0.08rem;
+	margin-right: 0.14rem;
+	background: #999999;
+}
+#header .search_C input::placeholder {
+	font-size: 0.26rem;
+	color: #000;
+}
+#header .search_C input:focus {
+	background: #fff;
+}
+
+#header .search_C input[type='button'] {
+	width: 1.4rem;
+	height: 0.72rem;
+	background: #414040;
+	color: #fff;
+	font-size: 0.34rem;
+	text-align: center;
+	line-height: 0.72rem;
+	border-radius: 0 0.08rem 0.08rem 0;
+	border: none;
+}
+#header .nav {
+	display: none;
+	position: absolute;
+	top: 0.96rem;
+	left: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid #6a6a6a;
+  z-index: 1;
+}
+.nav_list {
+	padding: 0.1rem 0;
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+}
+.nav_list li {
+	width: 25%;
+}
+.nav_list li a {
+	display: block;
+	color: #fff;
+	font-size: 0.38rem;
+	text-align: center;
+	line-height: 0.84rem;
+}
+/* main */
+.main {
+	padding-top: 1.84rem;
+}
+
+.scroll_nav {
+	width: 100%;
+	padding: 0.22rem 0 0.1rem;
+	overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+.scroll_nav_list {
+  /* 注意这个地方如果用flex他无所计算距离 */
+	/* display: flex; */
+  /* display: -webkit-flex; */
+  /* flex-wrap: nowrap; */
+  height: .86rem;
+  float: left;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 0;
+}
+.scroll_nav_list li {
+  padding: 0 0.28rem;
+  display: inline-block;
+  
+}
+.scroll_nav_list li a {
+	display: block;
+	line-height: 0.86rem;
+	color: #000;
+	font-size: 0.34rem;
+}
+.scroll_nav_list li.active {
+	background: #669900;
+}
+.scroll_nav_list li.active a {
+	color: #fff;
+}
+/* adv-scroll */
+.adv_swiper {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.adv_swiper .adv_list {
+  font-size: 0;
+  position: absolute;
+}
+.adv_swiper li {
+  display: inline-block;
+}
+.adv_swiper li img {
+	width: 100%;
+	display: block;
+}
+.adv_scoll_nav {
+	position: absolute;
+	bottom: 0.1rem;
+	right: 0.2rem;
+}
+.adv_scoll_nav span {
+	float: left;
+	width: 0.2rem;
+	height: 0.2rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.8);
+	margin-right: 4px;
+}
+.adv_scoll_nav span.active {
+	background: red;
+}
+
+/* mv */
+.mv{
+  width: 7.26rem;
+  box-sizing: border-box;
+  padding: .12rem 0;
+  margin: 0 auto;
+  background: #fff;
+}
+.mv_header{
+  height: .92rem;
+  display: flex;
+  align-items: center;
+}
+.mv_header .title{
+  font-size: .6rem;
+  color: #000;
+}
+.mv_header .more{
+  font-size: .42rem;
+  color: #551a8b;
+  flex: 1;
+  text-align: right;
+}
+
+/* mv_con */
+.mv_nav{
+  width: 100%;
+  overflow: hidden;
+}
+.mv_nav .nav_con{
+  font-size: 0;
+  white-space: nowrap;
+}
+.mv_nav .nav_con li{
+  display: inline-block;
+}
+.mv_nav .nav_con a{
+  display: block;
+  color: #6b6b6b;
+  font-size: .32rem;
+  padding: 0 .2rem;
+}
+.mv_nav .nav_con li.active{
+  border-bottom:2px solid #669900;
+}
+

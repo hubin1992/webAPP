@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div{
+      width: 200px;
+      height: 200px;
+      border: 2px solid #000;
+      margin: 0 auto;
+      /* 景深数值越大，这个效果越不明显 */
+      perspective: 200px;
+      /* 景深的基点 */
+      perspective-origin:center center; /*默认是center也是最常用的 */
+    }
+    .box{
+      margin: 50px auto; 
+      width: 100px;
+      height: 100px;
+      background: red;
+      transition: 1s;
+      transform-origin: center top 0;/* transform-origin:x轴，y轴，z轴*/
+    }
+    .div:hover .box{
+      transform: rotateX(300deg);
+      /* 旋转的基点，这个有点意思 */
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="div">
+    <div class="box"></div>
+  </div>
+</body>
+</html>

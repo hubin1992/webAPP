@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<!-- 
+    animation:
+    animation-name
+    animation-duration
+    animation-timing-function
+    animation-delay
+    animation-iteration-count 运动次数  num || infinite
+    animation-direction  是否反向播放动画  nomal alternate
+    animation-fill-mode : none | forwards | backwards | both;  播放完成的最后状态，常用的是both
+    // 暂停动画
+    animation-play-state: pause || running
+   -->
+
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				/* animation: move 2s 1s infinite alternate; */
+				/* animation: move 2s 1s  both; 动画停止的状态 */
+        -webkit-animation: move 2s ;
+        animation: move 2s ;
+			}
+			.move {
+				animation: move 2s;
+				width: 1000px;
+			}
+			@keyframes move {
+				0% {
+					width: 100px;
+				}
+				100% {
+					width: 1000px;
+				}
+			}
+
+			/* .box:hover {
+				animation-play-state: paused;
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script>
+			// 我们用class来替代最后停止的状态做一个兼容性的处理
+			// 但是有一个限制性，就是不能加延迟时间
+			let box = document.querySelector('.box');
+			// box.className = 'box move';
+      // let move = document.querySelector('.move');
+			//transitionend 事件
+      box.addEventListener("animationend",end)
+      function end(e){
+        alert("end")
+      }
+		</script>
+	</body>
+</html>

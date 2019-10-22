@@ -83,7 +83,6 @@
 				<span></span>
 			</nav>
 		</div>
-		<script src="./17-1.resetTransform.js"></script>
 		<script>
 			window.onload = function() {
 				var wrap = document.querySelector('.wrap');
@@ -106,18 +105,19 @@
 					'touchstart',
 					function(e) {
 						clearInterval(timer);
-						index = Math.round(startX / wrapW);
+						list.style.transition = 'none';
+						list.style.webkitTransition = 'none';
+						var tranX = resetTransform(list, 'translateX');
+						index = Math.round(tranX / wrapW);
 						if (-index == aLi.length - 1) {
 							index = navList.length - 1;
 							resetTransform(list, 'translateX', -index * wrapW);
-						} else if (-index < 0) {
+						} else if (-index <= 0) {
 							index = navList.length;
 							resetTransform(list, 'translateX', -index * wrapW);
 						}
 						startX = resetTransform(list, 'translateX');
 						startPoint = e.changedTouches[0].pageX;
-						list.style.transition = 'none';
-						list.style.webkitTransition = 'none';
 					},
 					{ passive: false }
 				);
@@ -133,7 +133,7 @@
 				wrap.addEventListener(
 					'touchend',
 					function(e) {
-            auto()
+						auto();
 						startX = resetTransform(list, 'translateX');
 						index = Math.round(startX / wrapW);
 						tab();
@@ -150,7 +150,8 @@
 							list.style.webkitTransition = 'none';
 							resetTransform(list, 'translateX', index * wrapW);
 						}
-						setTimeout(function() { // 加这个的原因，是因为我们去掉了时间，又在后面加了一个时间，代码运行速度没有浏览器渲染的块，所以为了避免动画没去掉，我们加一个异步
+						setTimeout(function() {
+							// 加这个的原因，是因为我们去掉了时间，又在后面加了一个时间，代码运行速度没有浏览器渲染的块，所以为了避免动画没去掉，我们加一个异步
 							index--;
 							tab();
 						});
@@ -167,6 +168,49 @@
 					navList[-index % navList.length].className = 'active';
 				}
 				auto();
+
+				// 辅助函数
+				/* 
+//注意：我们必须用这个设置了，才可以用这个来获取
+//思路: 我们存在元素的自定义属性中一份，这样我们获取到具体的了，而获取到的不是矩阵
+//限制: 只能用这个设置了，才可以用这个方法获取到
+*/
+				function resetTransform(ele, attr, val) {
+					var str = '';
+					if (!ele.obj) {
+						ele.obj = {};
+					}
+					if (arguments.length >= 3) {
+						ele.obj[attr] = val;
+						for (var v in ele.obj) {
+							switch (v) {
+								case 'scale':
+									str += v + '(' + ele.obj[v] + ') ';
+									break;
+								case 'skew':
+								case 'rotate':
+									str += v + '(' + ele.obj[v] + 'deg) ';
+								case 'translateX':
+								case 'translateY':
+									str += v + '(' + ele.obj[v] + 'px) ';
+							}
+						}
+						ele.style.transform = str;
+						ele.style.WebkitTransform = str;
+					} else {
+						if (typeof ele.obj[attr] == 'undefined') {
+							if (attr == 'scale') {
+								val = 1;
+							} else {
+								val = 0;
+							}
+						} else {
+							val = ele.obj[attr];
+						}
+						return val;
+					}
+				}
+
 			};
 		</script>
 	</body>

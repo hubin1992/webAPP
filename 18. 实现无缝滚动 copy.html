@@ -110,12 +110,13 @@
 				wrap.addEventListener(
 					'touchstart',
 					function(e) {
-						//这个我们仅仅是用来做无缝滚动
-						let index = Math.round(startX / wrapW);
-						if (-index == aLi.length - 1) {
-							index = navList.length - 1;
-							resetTransform(list, 'translateX', -index * wrapW);
-						} else if (-index < 0) {
+            //这个我们仅仅是用来做无缝滚动
+            let index = Math.round(startX / wrapW);
+						// if (-index == aLi.length - 1) {
+            //   index = navList.length - 1;
+            //   console.log(index)
+						// 	resetTransform(list, 'translateX', -index * wrapW); } else
+						 if (-index <= 0) {
 							index = navList.length;
 							resetTransform(list, 'translateX', -index * wrapW);
 						}
